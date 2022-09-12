@@ -75,4 +75,45 @@ return personInfo;
 
 }
 
+
+public ArrayList<PersonInfo> getUsersList() throws SQLException { 
+
+    ArrayList<PersonInfo> personList = new ArrayList<PersonInfo>(); 
+    
+    String sql = " SELECT * FROM users "; 
+    PreparedStatement pStmt = con.prepareStatement(sql); 
+    // pStmt.setString( 1, Name); 
+    
+    ResultSet rs = pStmt.executeQuery(); 
+    
+    String name; 
+    String phoneNo; 
+    String usertype;
+    String address;
+    String pass;
+
+    while ( rs.next() ) { 
+    name = rs.getString("name"); 
+    phoneNo = rs.getString("phonenum"); 
+    usertype = rs.getString("usertype"); 
+    address = rs.getString("address");
+    pass = rs.getString("password");
+
+    PersonInfo person = new PersonInfo(); 
+    person.setName(name); 
+    person.setPassword(pass); 
+    person.setUserType(usertype);
+    person.setPhoneNum(phoneNo); 
+    person.setAddress(address); 
+
+    
+    personList.add(person); 
+    
+    } 
+    
+    return personList; 
+    
+    }
+    
+
 }

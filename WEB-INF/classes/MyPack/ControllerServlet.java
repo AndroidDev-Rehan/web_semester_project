@@ -36,6 +36,11 @@ public class ControllerServlet extends HttpServlet {
             response.sendRedirect("searchproduct.jsp");
         }
 
+        else if (userAction.equals("deleteproduct")) {
+            response.sendRedirect("deleteproduct.jsp");
+        }
+
+
         if (userAction.equals("signup")) {
             signup(request, response);
         }
@@ -47,9 +52,17 @@ public class ControllerServlet extends HttpServlet {
         else if (userAction.equals("save"))
         { addProduct(request,response); }
 
+        else if (userAction.equals("delete"))
+        { deleteProduct(request,response); }
+
+
 
         else if (userAction.equals("viewproducts"))
         { viewAllProducts(request, response); }
+
+        else if (userAction.equals("viewusers"))
+        { viewAllUsers(request, response); }
+
 
         else if (userAction.equals("search"))
         { viewSearchProducts(request, response); }
@@ -246,6 +259,40 @@ public class ControllerServlet extends HttpServlet {
 
     }// end addperson()
 
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse
+    response)
+    throws ServletException, IOException
+    { try
+
+    {
+    ProductDao pDAO = new ProductDao();
+
+    String pName = request.getParameter("name");
+    pDAO.deleteProduct(pName);
+
+    HttpSession session= request.getSession(false);
+    session.setAttribute("header","product deleted succesfully");
+
+    response.sendRedirect("home.jsp");
+    }catch (SQLException sqlex){
+
+    // setting SQLException instance
+    request.setAttribute("javax.servlet.jsp.JspException" , sqlex);
+    RequestDispatcher rd = request.getRequestDispatcher("addbookerror.jsp");
+    rd.forward(request, response); }
+
+    catch (ClassNotFoundException cnfe){
+
+    // setting ClassNotFoundException instance
+    request.setAttribute("javax.servlet.jsp.JspException" , cnfe);
+    RequestDispatcher rd = request.getRequestDispatcher("addbokerror.jsp");
+    rd.forward(request,response);
+    }
+
+    }// end addperson()
+
+
     private void viewSearchProducts(HttpServletRequest request,
     HttpServletResponse response) throws ServletException, IOException {
     try {
@@ -280,5 +327,37 @@ public class ControllerServlet extends HttpServlet {
 
     }    
     }// end searchPerson()
+
+
+    private void viewAllUsers(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException {
+    try {
+
+    PersonDAO pDAO = new PersonDAO();
+
+    // String pName = request.getParameter("name");
+
+    ArrayList usersList = pDAO.getUsersList();
+    request.setAttribute("userslist", usersList);
+
+    RequestDispatcher rd = request.getRequestDispatcher("showusers.jsp");
+    rd.forward(request, response);
+    }catch (SQLException sqlex){
+
+    // setting SQLException instance
+    request.setAttribute("javax.servlet.jsp.JspException" , sqlex);
+    RequestDispatcher rd = request.getRequestDispatcher("addbookerror.jsp");
+    rd.forward(request,response);
+
+    }catch (ClassNotFoundException cnfe){
+
+    // setting ClassNotFoundException instance
+    request.setAttribute("javax.servlet.jsp.JspException" , cnfe);
+    RequestDispatcher rd = request.getRequestDispatcher("addbookerror.jsp");
+    rd.forward(request, response);
+
+    }
+    }// end searchPerson()
+
 
 } // end ControllerServlet

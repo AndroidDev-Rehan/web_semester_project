@@ -18,5 +18,9 @@ if(statement==null){
 <h4>  <a href="ControllerServlet?action=addproduct" > Add Product </a> </h4> 
 <h4> <a href="ControllerServlet?action=viewproducts" > View All Products </a> </h4> 
 <h4> <a href="ControllerServlet?action=searchproduct" > Search Product </a> </h4> 
+<h4> <a href="ControllerServlet?action=deleteproduct" > Delete Product </a> </h4> 
+<h4> <a href="ControllerServlet?action=viewusers" > View All Users </a> </h4> 
+<h4> <a href="ControllerServlet?action=viewusers" > Block User </a> </h4> 
+<h4> <a href="ControllerServlet?action=viewusers" > Unblock User </a> </h4> 
 
 </center></body></html> 

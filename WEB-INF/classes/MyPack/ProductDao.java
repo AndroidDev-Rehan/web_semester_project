@@ -111,5 +111,18 @@ public void addProduct(Product product) throws SQLException{
     pStmt.executeUpdate(); 
     
     } 
+
+public void deleteProduct(String name) throws SQLException{ 
+
+        String sql = " DELETE FROM products WHERE name = ? "; 
+        PreparedStatement pStmt = con.prepareStatement(sql); 
+                        
+        pStmt.setString( 1 , name ); 
+        
+        pStmt.executeUpdate(); 
+        
+        } 
+    
+
     
 }
