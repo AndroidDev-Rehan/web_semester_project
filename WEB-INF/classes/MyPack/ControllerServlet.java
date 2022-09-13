@@ -354,7 +354,7 @@ public class ControllerServlet extends HttpServlet {
 
     // String pName = request.getParameter("name");
 
-    ArrayList productList = pDAO.getProductsList();
+    ArrayList<Product> productList = pDAO.getProductsList();
     request.setAttribute("list", productList);
 
     RequestDispatcher rd = request.getRequestDispatcher("showproducts.jsp");
@@ -556,7 +556,7 @@ public class ControllerServlet extends HttpServlet {
 
     // String pName = request.getParameter("name");
 
-    ArrayList productList = pDAO.getSearchProductsList(request.getParameter("name"));
+    ArrayList<Product> productList = pDAO.getSearchProductsList(request.getParameter("name"));
     request.setAttribute("list", productList);
 
     System.out.println("forwarding request");    
@@ -592,7 +592,7 @@ public class ControllerServlet extends HttpServlet {
 
     // String pName = request.getParameter("name");
 
-    ArrayList usersList = pDAO.getUsersList();
+    ArrayList<PersonInfo> usersList = pDAO.getUsersList();
     request.setAttribute("userslist", usersList);
 
     RequestDispatcher rd = request.getRequestDispatcher("showusers.jsp");
