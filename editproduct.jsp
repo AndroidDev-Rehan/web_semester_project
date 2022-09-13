@@ -1,7 +1,6 @@
 <%@page errorPage="addbookerror.jsp" %> 
 <%@page import="java.util.*" %><%@page import="MyPack.*" %> 
 
-
 <html><body><center> 
 
 <%
@@ -10,21 +9,22 @@ PersonInfo person = (PersonInfo)session.getAttribute("person");
 if(person==null){
   response.sendRedirect("login.jsp?error=true");  
 }
+
 %>
 
 <h2> Virtual Store </h2> 
-<h3> Delete Product</h3> 
+<h3> Search and Edit Product </h3> 
 
-<form name ="delete" action="ControllerServlet" > 
+<form name ="edit" action="ControllerServlet" > 
 <TABLE BORDER="1" > 
 
 <TR> 
-  <TD><h4 >Product Name</h4></TD> 
+  <TD><h4 >Name</h4></TD> 
   <TD><input type="text" name="name" /></TD> 
 </TR> 
 
 <TR>
-  <TD COLSPAN="2" ALIGN="CENTER"><input type="submit" value="delete" name="action" />
+  <TD COLSPAN="2" ALIGN="CENTER"><input type="submit" value="edit" name="action" />
   <input type="reset" value="clear" /></TD> 
 </TR> 
 

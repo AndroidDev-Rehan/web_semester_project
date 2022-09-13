@@ -4,6 +4,15 @@
 
 <html><body><center> 
 
+<%
+PersonInfo oldPerson = (PersonInfo)session.getAttribute("person");
+
+if(oldPerson==null){
+  response.sendRedirect("login.jsp?error=true");  
+}
+
+%>
+
 <h2> Virtual Store </h2> 
 <h3> Following results meet your search criteria</h3> 
 

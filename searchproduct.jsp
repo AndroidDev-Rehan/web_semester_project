@@ -1,6 +1,15 @@
 <%@page errorPage="addbookerror.jsp" %> 
+<%@page import="java.util.*" %><%@page import="MyPack.*" %> 
 
 <html><body><center> 
+
+<%
+PersonInfo person = (PersonInfo)session.getAttribute("person");
+
+if(person==null){
+  response.sendRedirect("login.jsp?error=true");  
+}
+%>
 
 <h2> Virtual Store </h2> 
 <h3> Search Product</h3> 

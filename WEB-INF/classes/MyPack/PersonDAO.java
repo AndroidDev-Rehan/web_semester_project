@@ -23,7 +23,7 @@ System.out.println("connection established");
 
 public void addPerson(PersonInfo person) throws SQLException{ 
 
-String sql = " INSERT INTO users VALUES (?, ?, ?, ?, ?)"; 
+String sql = " INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)"; 
 PreparedStatement pStmt = con.prepareStatement(sql); 
 
 String name = person.getName(); 
@@ -32,12 +32,17 @@ String pNo = person.getPhoneNum();
 String usertype = person.getUserType(); 
 String password = person.getPassword(); 
 
+System.out.println("usertype of person in dao:");
+System.out.println(person.getUserType());
+
+
 
 pStmt.setString( 1 , name ); 
 pStmt.setString( 2 , add ); 
 pStmt.setString( 3 , pNo );
 pStmt.setString( 4 , usertype );
 pStmt.setString( 5 , password );
+pStmt.setString( 6 , "unblocked" );
 
 
 pStmt.executeUpdate(); 
@@ -64,6 +69,7 @@ if (rs.next()) {
   personInfo.setPassword(rs.getString("password"));
   personInfo.setUserType(rs.getString("usertype"));
   personInfo.setPhoneNum(rs.getString("phonenum"));
+  personInfo.setStatus(rs.getString("status"));
   System.out.println("person filled"); 
 
 }
@@ -78,7 +84,7 @@ return personInfo;
 
 public ArrayList<PersonInfo> getUsersList() throws SQLException { 
 
-    ArrayList<PersonInfo> personList = new ArrayList<PersonInfo>(); 
+  ArrayList<PersonInfo> personList = new ArrayList<PersonInfo>(); 
     
     String sql = " SELECT * FROM users "; 
     PreparedStatement pStmt = con.prepareStatement(sql); 
@@ -115,5 +121,55 @@ public ArrayList<PersonInfo> getUsersList() throws SQLException {
     
     }
     
+public void blockUser(String name)
+    throws SQLException {
+    
+    System.out.println("into block user "); 
+        
+    Statement st = con.createStatement();
+    
+    String query = "UPDATE users SET status = 'blocked' WHERE name = '" + name + "'" ;
+    st.executeUpdate(query);
+        
+    st.close();
+    System.out.println("persondao login finished"); 
+        
+    }
+
+public void unblockUser(String name)
+    throws SQLException {
+    
+    System.out.println("into unblock user "); 
+        
+    Statement st = con.createStatement();
+    
+    String query = "UPDATE users SET status = 'unblocked' WHERE name = '" + name + "'" ;
+    st.executeUpdate(query);
+        
+    st.close();
+    System.out.println("persondao login finished"); 
+        
+    }
+
+public boolean userExists(String name)throws SQLException { 
+    
+    String sql = " SELECT * FROM users where name = ? "; 
+    PreparedStatement pStmt = con.prepareStatement(sql); 
+    pStmt.setString( 1, name); 
+    
+    ResultSet rs = pStmt.executeQuery(); 
+    
+    if ( rs.next() ) {    
+      System.out.println("user exists already, dao");
+ 
+      return true;
+    } 
+
+    System.out.println("user does not exist already, dao");
+
+    return false; 
+    
+    }
+
 
 }

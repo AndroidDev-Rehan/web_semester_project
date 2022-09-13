@@ -8,6 +8,7 @@ private String address;
 private String phoneNum;
 private String usertype;
 private String password;
+private String status;
 
 public PersonInfo() { 
 name = ""; 
@@ -15,6 +16,7 @@ address = "";
 phoneNum = ""; 
 usertype="";
 password="";
+status = "unblocked";
 } 
 
 
@@ -31,7 +33,10 @@ public void setUserType(String type){
     usertype = type;} 
     
 public void setPassword(String type){ 
-    password = type;} 
+    password = type;}
+    
+public void setStatus(String type){ 
+    status = type;}    
 
 
 
@@ -49,6 +54,9 @@ public String getUserType( ){
 
 public String getPassword( ){ 
     return password;} 
-    
+
+public String getStatus( ){ 
+        return status;} 
+        
 
 } // end class PersonInfo 

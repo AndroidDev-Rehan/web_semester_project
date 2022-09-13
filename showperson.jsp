@@ -4,6 +4,14 @@
 
 <html><body><center> 
 
+<%
+PersonInfo person = (PersonInfo)session.getAttribute("person");
+
+if(person==null){
+  response.sendRedirect("login.jsp?error=true");  
+}
+%>
+
 <h2> Address Book </h2> 
 <h3> Following results meet your search criteria</h3> 
 

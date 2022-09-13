@@ -122,7 +122,43 @@ public void deleteProduct(String name) throws SQLException{
         pStmt.executeUpdate(); 
         
         } 
-    
 
+public boolean productExists(String name)throws SQLException { 
+    
+            String sql = " SELECT * FROM products where name = ? "; 
+            PreparedStatement pStmt = con.prepareStatement(sql); 
+            pStmt.setString( 1, name); 
+            
+            ResultSet rs = pStmt.executeQuery(); 
+            
+            if ( rs.next() ) {    
+              System.out.println("product exists already, dao");
+         
+              return true;
+            } 
+        
+            System.out.println("product does not exist already, dao");
+        
+            return false; 
+            
+            }
+                
+public void updateProduct(Product product )
+            throws SQLException {
+                        
+            System.out.println("into update product "); 
+                
+            Statement st = con.createStatement();
+            
+            String query = "UPDATE products SET color = '"+product.getColor()+ "', company = '" + product.getCompany()+  "', price = '" + product.getPrice() +   "' WHERE name = '" + product.getName()+ "'" ;
+            System.out.println(query);
+            st.executeUpdate(query);
+                
+            st.close();
+            System.out.println("update product finished"); 
+
+                
+            }
+                    
     
 }

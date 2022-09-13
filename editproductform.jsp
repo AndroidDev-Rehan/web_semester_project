@@ -9,20 +9,22 @@ PersonInfo person = (PersonInfo)session.getAttribute("person");
 if(person==null){
   response.sendRedirect("login.jsp?error=true");  
 }
+
+String name = (String)session.getAttribute("productname");
+
+if(name==null){
+  response.sendRedirect("home.jsp");  
+}
+
 %>
 
 <h2> Virtual Products Store </h2> 
-<h3> Add New Product</h3> 
+<h3> Editing Product <%= name %> </h3> 
 
 
-<form name ="register" action="ControllerServlet" > 
+<form name ="editproductform" action="ControllerServlet" > 
 
 <TABLE BORDER="1" > 
-
-<TR> 
-  <TD> <h4 > Name </h4> </TD> 
- <TD> <input type="text" name="name" /> </TD> 
-</TR> 
 
 <TR>
   <TD> <h4> Company </h4> </TD> 
@@ -41,7 +43,7 @@ if(person==null){
 
 
 <TR> 
-  <TD COLSPAN="2" ALIGN="CENTER"><input type="submit" value="save" name="action" />
+  <TD COLSPAN="2" ALIGN="CENTER"><input type="submit" value="Edit and Save" name="action" />
 			<input type="reset" value="clear" /></TD> 
 </TR> 
 
