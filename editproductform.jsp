@@ -11,10 +11,14 @@ if(person==null){
 }
 
 String name = (String)session.getAttribute("productname");
+Product product = (Product)session.getAttribute("product");
 
-if(name==null){
+if((name==null) || (product == null) ){
+  session.setAttribute("header", "You dont have permissions to perform this operation");  
   response.sendRedirect("home.jsp");  
 }
+
+System.out.println(product.getCompany());
 
 %>
 
@@ -28,22 +32,22 @@ if(name==null){
 
 <TR>
   <TD> <h4> Company </h4> </TD> 
-  <TD> <input type="text" name="company" /> </TD> 
+  <TD> <input type="text" name="company" value=<%= product.getCompany() %> /> </TD> 
 </TR> 
 
 <TR> 
   <TD> <h4> Color</h4> </TD> 
-  <TD> <input type="text" name="color" /> </TD> 
+  <TD> <input type="text" name="color" value="<%= product.getColor() %>" /> </TD> 
 </TR> 
 
 <TR> 
   <TD> <h4> Price</h4> </TD> 
-  <TD> <input type="text" name="price" /> </TD> 
+  <TD> <input type="text" name="price" value="<%= product.getPrice() %>" /> </TD> 
 </TR> 
 
 
 <TR> 
-  <TD COLSPAN="2" ALIGN="CENTER"><input type="submit" value="Edit and Save" name="action" />
+  <TD COLSPAN="2" ALIGN="CENTER"><input type="submit" value="Update and Save" name="action" />
 			<input type="reset" value="clear" /></TD> 
 </TR> 
 

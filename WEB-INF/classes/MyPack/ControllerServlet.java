@@ -70,7 +70,7 @@ public class ControllerServlet extends HttpServlet {
             editProduct(request, response);
         }
 
-        else if (userAction.equals("Edit and Save")) {
+        else if (userAction.equals("Update and Save")) {
             editAndSaveProduct(request, response);
         }
 
@@ -481,7 +481,8 @@ public class ControllerServlet extends HttpServlet {
         response.sendRedirect("home.jsp");
         return;
     }
-
+    
+    session.setAttribute("product", pDAO.getProduct(pName));
     session.setAttribute("productname",pName);
     response.sendRedirect("editproductform.jsp");
     }catch (SQLException sqlex){
@@ -531,6 +532,10 @@ public class ControllerServlet extends HttpServlet {
     pDAO.updateProduct(product);
 
     System.out.println("redirecting to home");
+
+    session.setAttribute("product", null);
+    session.setAttribute("productname",null);
+
 
     session.setAttribute("header","product updated succesfully");
     response.sendRedirect("home.jsp");

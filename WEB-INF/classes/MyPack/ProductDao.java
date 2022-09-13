@@ -158,6 +158,37 @@ public void updateProduct(Product product )
 
                 
             }
-                    
+
+public Product getProduct(String pName) throws SQLException { 
+                
+                String sql = " SELECT * FROM products where name = ?"; 
+                PreparedStatement pStmt = con.prepareStatement(sql); 
+                pStmt.setString( 1, pName);                 
+                ResultSet rs = pStmt.executeQuery(); 
+                
+                String name; 
+                String color; 
+                String company;
+                String price;
+                Product product = null;
+                if ( rs.next() ) { 
+                name = rs.getString("name"); 
+                color = rs.getString("color"); 
+                company = rs.getString("company"); 
+                price = rs.getString("price");
+                
+                product = new Product(); 
+                product.setName(name); 
+                product.setColor(color); 
+                product.setCompany(company); 
+                product.setPrice(price);
+                             
+                
+                } 
+                
+                return product; 
+                
+                }
+                            
     
 }
