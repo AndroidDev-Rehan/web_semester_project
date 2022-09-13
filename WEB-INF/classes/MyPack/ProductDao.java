@@ -1,6 +1,5 @@
 package MyPack;
 
-import MyPack.PersonInfo;
 import java.util.*; 
 import java.sql.*; 
 
