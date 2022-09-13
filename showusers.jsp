@@ -23,6 +23,8 @@ if(oldPerson==null){
  <TH> Phone No </TH> 
  <TH> Address </TH> 
  <TH> User Type </TH> 
+ <TH> Account Status </TH> 
+
 </TR> 
 
 <% 
@@ -37,6 +39,7 @@ person = (PersonInfo)userslist.get(i); %>
 <TD> <%= person.getPhoneNum()%> </TD>
 <TD> <%= person.getAddress()%> </TD>
 <TD> <%= person.getUserType()%> </TD> 
+<TD> <%= person.getStatus()%> </TD> 
 
 </TR> 
 

@@ -96,6 +96,7 @@ public ArrayList<PersonInfo> getUsersList() throws SQLException {
     String usertype;
     String address;
     String pass;
+    String status;
 
     while ( rs.next() ) { 
     name = rs.getString("name"); 
@@ -103,13 +104,15 @@ public ArrayList<PersonInfo> getUsersList() throws SQLException {
     usertype = rs.getString("usertype"); 
     address = rs.getString("address");
     pass = rs.getString("password");
+    status = rs.getString("status");
 
     PersonInfo person = new PersonInfo(); 
     person.setName(name); 
     person.setPassword(pass); 
     person.setUserType(usertype);
     person.setPhoneNum(phoneNo); 
-    person.setAddress(address); 
+    person.setAddress(address);
+    person.setStatus(status); 
 
     
     personList.add(person); 
