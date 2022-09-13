@@ -197,6 +197,10 @@ public class ControllerServlet extends HttpServlet {
                 // System.out.println("setting fromLogin attribute finished"); 
             }
 
+            else{
+                response.sendRedirect("login.jsp?invalidcreds=true");                
+            }
+
 
             // response.sendRedirect("home.jsp");
 

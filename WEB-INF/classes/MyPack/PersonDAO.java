@@ -162,7 +162,7 @@ public boolean userExists(String name)throws SQLException {
       System.out.println("user exists already, dao");
  
       return true;
-    } 
+    }
 
     System.out.println("user does not exist already, dao");
 

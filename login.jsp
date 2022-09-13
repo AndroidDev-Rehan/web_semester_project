@@ -23,6 +23,12 @@ if (request.getParameter("userexists")!=null){%>
 <%} 
 %>
 
+<% 
+if (request.getParameter("invalidcreds")!=null){%>
+
+<h1>Invalid Credentials, try again. </h1>
+<%} 
+%>
 
 
 Login Id:<input type="text" name="name" required><br><br>
