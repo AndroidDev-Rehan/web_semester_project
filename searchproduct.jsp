@@ -19,7 +19,7 @@ if(person==null){
 
 <TR> 
   <TD><h4 >Name</h4></TD> 
-  <TD><input type="text" name="name" /></TD> 
+  <TD><input type="text" name="name" required /></TD> 
 </TR> 
 
 <TR>

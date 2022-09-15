@@ -44,6 +44,11 @@ public class ControllerServlet extends HttpServlet {
             response.sendRedirect("blockuser.jsp");
         }
 
+        else if (userAction.equals("unblockuser")) {
+            response.sendRedirect("unblockuser.jsp");
+        }
+
+
         else if (userAction.equals("editproduct")) {
             response.sendRedirect("editproduct.jsp");
         }
@@ -272,11 +277,16 @@ public class ControllerServlet extends HttpServlet {
 
         {
             PersonDAO pDAO = new PersonDAO();
-
+            HttpSession session= request.getSession(false);
             String pName = request.getParameter("name");
 
+            if(pDAO.userExists(pName)==false){
+                session.setAttribute("header","User doesn't exist " + pName);
+                response.sendRedirect("home.jsp");    
+                return;
+            }
+
             pDAO.blockUser(pName);
-            HttpSession session= request.getSession(false);
             session.setAttribute("header","succesfully blocked " + pName);
             response.sendRedirect("home.jsp");
         } catch (SQLException sqlex) {
@@ -315,9 +325,16 @@ public class ControllerServlet extends HttpServlet {
             PersonDAO pDAO = new PersonDAO();
 
             String pName = request.getParameter("name");
+            HttpSession session= request.getSession(false);
+
+            if(pDAO.userExists(pName)==false){
+                session.setAttribute("header","User doesn't exist " + pName);
+                response.sendRedirect("home.jsp");    
+                return;
+            }
+
 
             pDAO.unblockUser(pName);
-            HttpSession session= request.getSession(false);
             session.setAttribute("header","succesfully unblocked " + pName);
             response.sendRedirect("home.jsp");
         } catch (SQLException sqlex) {
@@ -348,7 +365,6 @@ public class ControllerServlet extends HttpServlet {
         }
 
     }// end addperson()
-
 
     private void viewAllProducts(HttpServletRequest request,
     HttpServletResponse response) throws ServletException, IOException {
@@ -443,9 +459,18 @@ public class ControllerServlet extends HttpServlet {
     ProductDao pDAO = new ProductDao();
 
     String pName = request.getParameter("name");
+    HttpSession session= request.getSession(false);
+
+
+    if(pDAO.productExists(pName)==false){
+        response.sendRedirect("home.jsp");
+        session.setAttribute("header","product doesn't exist");
+        return;
+    }
+
+
     pDAO.deleteProduct(pName);
 
-    HttpSession session= request.getSession(false);
     session.setAttribute("header","product deleted succesfully");
 
     response.sendRedirect("home.jsp");

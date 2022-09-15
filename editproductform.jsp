@@ -32,28 +32,26 @@ System.out.println(product.getCompany());
 
 <TR>
   <TD> <h4> Company </h4> </TD> 
-  <TD> <input type="text" name="company" value=<%= product.getCompany() %> /> </TD> 
+  <TD> <input type="text" name="company" value=<%= product.getCompany() %> required/> </TD> 
 </TR> 
 
 <TR> 
   <TD> <h4> Color</h4> </TD> 
-  <TD> <input type="text" name="color" value="<%= product.getColor() %>" /> </TD> 
+  <TD> <input type="text" name="color" value="<%= product.getColor() %>" required /> </TD> 
 </TR> 
 
 <TR> 
   <TD> <h4> Price</h4> </TD> 
-  <TD> <input type="text" name="price" value="<%= product.getPrice() %>" /> </TD> 
+  <TD> <input type="text" name="price" value="<%= product.getPrice() %>" required /> </TD> 
 </TR> 
 
 
 <TR> 
   <TD COLSPAN="2" ALIGN="CENTER"><input type="submit" value="Update and Save" name="action" />
-			<input type="reset" value="clear" /></TD> 
+			<%-- <input type="reset" value="clear" /></TD>  --%>
 </TR> 
 
 
 </TABLE></form> 
-
-<h4><a href="ControllerServlet?action=searchperson" > Search Person </a></h4> 
 
 </center></body></html>

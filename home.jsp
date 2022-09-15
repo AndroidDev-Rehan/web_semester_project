@@ -24,7 +24,7 @@ if(person==null){
 }
 
 if(statement==null){
-    statement = "no header";
+    statement = "";
 }
 
   
@@ -35,9 +35,18 @@ if(statement==null){
 <h4> <a href="ControllerServlet?action=viewproducts" > View All Products </a> </h4><br> 
 <h4> <a href="ControllerServlet?action=searchproduct" > Search Product </a> </h4><br> 
 <h4> <a href="ControllerServlet?action=deleteproduct" > Delete Product </a> </h4><br> 
-<h4> <a href="ControllerServlet?action=viewusers" > View All Users </a> </h4><br> 
-<h4> <a href="ControllerServlet?action=blockuser" > Block User </a> </h4><br> 
-<h4> <a href="ControllerServlet?action=viewusers" > Unblock User </a> </h4><br>
+<%
+if(person.getUserType().equals("admin")==true)
+{out.println("<h4> <a href=\"ControllerServlet?action=viewusers\" > View All Users </a> </h4><br> ");
+}%> 
+<%
+if(person.getUserType().equals("admin")==true)
+{out.println("<h4> <a href=\"ControllerServlet?action=blockuser\" > Block User </a> </h4><br>");
+}%> 
+<%
+if(person.getUserType().equals("admin")==true)
+{out.println("<h4> <a href=\"ControllerServlet?action=unblockuser\" > Unblock User </a> </h4><br>");
+}%> 
 <h4> <a href="ControllerServlet?action=editproduct" > Edit Product </a> </h4><br> 
 
 </center></body></html> 

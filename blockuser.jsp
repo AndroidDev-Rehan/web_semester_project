@@ -9,6 +9,12 @@ PersonInfo person = (PersonInfo)session.getAttribute("person");
 if(person==null){
   response.sendRedirect("login.jsp?error=true");  
 }
+
+else if (person.getUserType().equals("admin")==false){
+response.sendRedirect("home.jsp");  
+}
+
+
 %>
 
 <h2> Virtual Store </h2> 
@@ -19,7 +25,7 @@ if(person==null){
 
 <TR> 
   <TD><h4 >Name</h4></TD> 
-  <TD><input type="text" name="name" /></TD> 
+  <TD><input type="text" name="name" required /></TD> 
 </TR> 
 
 <TR>

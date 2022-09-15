@@ -11,6 +11,10 @@ if(oldPerson==null){
   response.sendRedirect("login.jsp?error=true");  
 }
 
+else if (oldPerson.getUserType().equals("admin")==false){
+response.sendRedirect("home.jsp");  
+}
+
 %>
 
 <h2> Virtual Store </h2> 

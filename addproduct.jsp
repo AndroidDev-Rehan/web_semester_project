@@ -21,22 +21,22 @@ if(person==null){
 
 <TR> 
   <TD> <h4 > Name </h4> </TD> 
- <TD> <input type="text" name="name" /> </TD> 
+ <TD> <input type="text" name="name" required /> </TD> 
 </TR> 
 
 <TR>
   <TD> <h4> Company </h4> </TD> 
-  <TD> <input type="text" name="company" /> </TD> 
+  <TD> <input type="text" name="company" required /> </TD> 
 </TR> 
 
 <TR> 
   <TD> <h4> Color</h4> </TD> 
-  <TD> <input type="text" name="color" /> </TD> 
+  <TD> <input type="text" name="color" required /> </TD> 
 </TR> 
 
 <TR> 
   <TD> <h4> Price</h4> </TD> 
-  <TD> <input type="text" name="price" /> </TD> 
+  <TD> <input type="number" name="price" required /> </TD> 
 </TR> 
 
 
@@ -48,6 +48,5 @@ if(person==null){
 
 </TABLE></form> 
 
-<h4><a href="ControllerServlet?action=searchperson" > Search Person </a></h4> 
 
 </center></body></html>

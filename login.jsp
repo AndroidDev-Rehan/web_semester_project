@@ -32,7 +32,7 @@ if (request.getParameter("invalidcreds")!=null){%>
 
 
 Login Id:<input type="text" name="name" required><br><br>
-Password :<input type="text" name="password" required><br><br>
+Password :<input type="password" name="password" required><br><br>
 <input type="submit" value="login" name = "action" ><br><br>
 <h3>Dont have an account? <a href="signup.jsp" > signup </a></h3>
 </form>
